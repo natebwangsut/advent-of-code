@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"name": "advent-of-code",
+			"path": "."
+		},
+		{
+			"name": "1",
+			"path": "2022/1"
+		},
+		{
+			"name": "2",
+			"path": "2022/2"
+		}
+	],
+	"settings": {}
+}
