@@ -5,7 +5,7 @@ use std::{
 };
 
 fn main() {
-    println!("one");
+    println!("advent-of-code: one");
     let mut elves: Vec<i32> = vec![0];
 
     // File hosts must exist in current path before this produces output
@@ -30,6 +30,26 @@ fn main() {
 
     // Show final result
     println!("max cal by an elves: {}", elves.iter().max().unwrap_or(&0));
+
+    // We wanted to extract top 3
+    let top = 3;
+    let mut top_cal = 0;
+
+    let mut n = 1;
+    while n <= top {
+        let max = elves.iter().max().unwrap_or(&0);
+        top_cal += max;
+
+        elves.remove(
+            elves
+                .iter()
+                .position(|x| x == max)
+                .expect("an elf carrying that food was not found"),
+        );
+
+        n += 1;
+    }
+    println!("max cal by {} number of elves: {}", top, top_cal);
 }
 
 // The output is wrapped in a Result to allow matching on errors
