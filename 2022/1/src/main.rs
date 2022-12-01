@@ -13,7 +13,6 @@ fn main() {
 
     // File hosts must exist in current path before this produces output
     if let Ok(lines) = read_lines("./input") {
-        // Consumes the iterator, returns an (Optional) String
         let mut counter = 0;
         for line in lines.flatten() {
             // Empty line - the current elf is done, adding new elf
@@ -22,17 +21,17 @@ fn main() {
                 elves.push(0);
                 continue;
             }
-
             // Add the cals to the current elf that's carrying the food
             elves[counter] += line.parse::<i32>().unwrap_or_default();
         }
     }
 
-    // Show final result
-    println!("max cal by an elves: {}", elves.iter().max().unwrap_or(&0));
+    elves.sort();
+
+    // Print solution 1
+    println!("cal of all elves: {}", elves.get(elves.len() - 1).unwrap());
 
     // Extract largest N numbers and sum it up
-    elves.sort();
     let top = 3;
     let top_cal = elves
         .rchunks(top)
@@ -41,7 +40,8 @@ fn main() {
         .iter()
         .sum::<i32>();
 
-    println!("max cal by {} number of elves: {}", top, top_cal);
+    // Print solution 2
+    println!("cal by {} number of elves: {}", top, top_cal);
 }
 
 ///
